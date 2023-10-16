@@ -3,6 +3,7 @@ import icon1 from "../../assets/icon-1.png";
 import icon2 from "../../assets/icon-2.png";
 import icon3 from "../../assets/icon-3.png";
 import icon4 from "../../assets/icon-4.png";
+import AddCoffee from "../AddCoffee";
 
 import SocialMedia from "../SocialMedia";
 const Home = () => {
@@ -56,7 +57,8 @@ const Home = () => {
           </p>
         </div>
       </div>
-
+      {/* add coffee */}
+      <AddCoffee></AddCoffee>
       {/* follow on social media */}
       <SocialMedia></SocialMedia>
     </div>
