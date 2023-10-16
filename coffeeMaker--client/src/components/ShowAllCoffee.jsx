@@ -5,7 +5,7 @@ import React from "react";
 // https://i.ibb.co/m4gwYP5/pexels-jill-wellington-3880909.jpg
 // https://i.ibb.co/GxMhs3T/pexels-arya-bajra-15801008.jpg
 // https://i.ibb.co/DbDY1Df/pexels-dina-nasyrova-5071493.jpg
-const AddCoffee = () => {
+const ShowAllCoffee = () => {
   return (
     <div className="px-36 py-20">
       <div className="text-center">
@@ -17,4 +17,4 @@ const AddCoffee = () => {
   );
 };
 
-export default AddCoffee;
+export default ShowAllCoffee;
