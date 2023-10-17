@@ -1,8 +1,39 @@
-import React from "react";
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
 import { FaArrowLeft } from "react-icons/fa6";
 const AddCoffeeForm = () => {
+  const handleAddCoffee = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const photo = form.photo.value;
+    const detail = form.detail.value;
+    const coffeeDetail = {
+      name,
+      chef,
+      supplier,
+      taste,
+      category,
+      photo,
+      detail,
+    };
+    console.log(coffeeDetail);
+    fetch(`http://localhost:3000/coffee`,{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(coffeeDetail)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Coffee detail data =>",data);
+      });
+  };
   return (
     <>
       <Header></Header>
@@ -10,10 +41,12 @@ const AddCoffeeForm = () => {
         <button className="bg-[#E3B577] p-4 mb-5 text-[#331A15] flex justify-center items-center gap-3 hover:bg-[#e8ded1]">
           <FaArrowLeft></FaArrowLeft>Back to Home
         </button>
-        
-        <form className=" bg-[#eeebe2] p-10">
-        <h1 className="text-4xl text-center text-[#331A15]">Add New Coffee</h1>
-            {/* name and chef */}
+
+        <form onSubmit={handleAddCoffee} className=" bg-[#eeebe2] p-10">
+          <h1 className="text-4xl text-center text-[#331A15]">
+            Add New Coffee
+          </h1>
+          {/* name and chef */}
           <div className="flex gap-5 py-2">
             <div className="form-control w-1/2">
               <label className="label">
@@ -24,8 +57,8 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="Enter your Coffee Name"
                   className="input input-bordered bg-white"
-                  required 
-                  name=""
+                  required
+                  name="name"
                 />
               </label>
             </div>
@@ -39,15 +72,15 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="Chef name"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="chef"
                 />
               </label>
             </div>
           </div>
-        
-         {/* Supplier and Taste */}
-         <div className="flex gap-5 py-2">
+
+          {/* Supplier and Taste */}
+          <div className="flex gap-5 py-2">
             <div className="form-control w-1/2">
               <label className="label">
                 <span className="text-[#331A15]">Supplier</span>
@@ -57,7 +90,7 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="Supplier"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="supplier"
                 />
               </label>
@@ -71,15 +104,15 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="taste"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="taste"
                 />
               </label>
             </div>
           </div>
 
-           {/* category and detail */}
-           <div className="flex gap-5 py-2">
+          {/* category and detail */}
+          <div className="flex gap-5 py-2">
             <div className="form-control w-1/2">
               <label className="label">
                 <span className="text-[#331A15]">category</span>
@@ -89,7 +122,7 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="category"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="category"
                 />
               </label>
@@ -103,16 +136,15 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="detail"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="detail"
                 />
               </label>
             </div>
           </div>
 
-
-           {/* photo */}
-           <div className="flex gap-5 py-2">
+          {/* photo */}
+          <div className="flex gap-5 py-2">
             <div className="form-control w-full">
               <label className="label">
                 <span className="text-[#331A15]">Photo</span>
@@ -122,13 +154,17 @@ const AddCoffeeForm = () => {
                   type="text"
                   placeholder="photo url"
                   className="input input-bordered bg-white"
-                  required 
+                  required
                   name="photo"
                 />
               </label>
             </div>
           </div>
-
+          <input
+            type="submit"
+            value="Add Coffee"
+            className="block w-full py-3 bg-[#E3B577] text-[#331A15] hover:bg-[#e5a450]"
+          />
         </form>
       </div>
       <Footer></Footer>

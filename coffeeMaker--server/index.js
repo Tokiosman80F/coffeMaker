@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 // XUNObJO83OcbnzU1 coffeMaker2
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Say Hello to Coffee Maker!')
 })
 // dotenv
 require('dotenv').config()
@@ -29,6 +29,18 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
+    
+    // connecting to the database
+    const coffeeCollection=client.db('coffeeDB').collection('coffeeUser')
+    // first create the data in database
+    //  POST
+    app.post('/coffee',async(req,res)=>{
+      const newCoffee=req.body
+      console.log(newCoffee);
+      const result= await coffeeCollection.insertOne(newCoffee)
+      res.send(result)
+    })
+    
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
