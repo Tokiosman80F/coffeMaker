@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { DataContext } from "../App";
 import CoffeeCards from "./CoffeeCards";
 import { FaMugHot } from "react-icons/fa6";
@@ -19,10 +19,11 @@ const ShowAllCoffee = () => {
         <p>--Sip & Savor--</p>
         <h1 className="text-4xl font-bold">Our popular Product</h1>
       
+        <Link to="/addCoffeeForm">
         <button className="bg-[#E3B577] p-4 mx-auto mt-5 text-[#331A15] flex justify-center items-center gap-3 hover:bg-[#e8ded1]">
-
           Add Coffee <FaMugHot></FaMugHot>
         </button>
+        </Link>
         {/* card */}
         <div className="grid grid-cols-2 gap-5 mt-10">
         {

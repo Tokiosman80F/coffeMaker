@@ -1,6 +1,8 @@
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
 import { FaArrowLeft } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 const AddCoffeeForm = () => {
   const handleAddCoffee = (e) => {
     e.preventDefault();
@@ -22,26 +24,37 @@ const AddCoffeeForm = () => {
       detail,
     };
     console.log(coffeeDetail);
-    fetch(`http://localhost:3000/coffee`,{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
+    fetch(`http://localhost:3000/coffee`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(coffeeDetail)
+      body: JSON.stringify(coffeeDetail),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Coffee detail data =>",data);
-        form.reset()
+        console.log("Coffee detail data =>", data);
+        if(data.insertedId)
+        {
+          Swal.fire({
+            title: 'Success',
+            text: 'Coffee Add',
+            icon: 'success',
+            confirmButtonText: 'okay'
+          })
+          form.reset();
+        }
       });
   };
   return (
     <>
       <Header></Header>
       <div className="px-36 py-20  bg-[#ffffff]">
-        <button className="bg-[#E3B577] p-4 mb-5 text-[#331A15] flex justify-center items-center gap-3 hover:bg-[#e8ded1]">
-          <FaArrowLeft></FaArrowLeft>Back to Home
-        </button>
+        <Link to="/">
+          <button className="bg-[#E3B577] p-4 mb-5 text-[#331A15] flex justify-center items-center gap-3 hover:bg-[#e8ded1]">
+            <FaArrowLeft></FaArrowLeft>Back to Home
+          </button>
+        </Link>
 
         <form onSubmit={handleAddCoffee} className=" bg-[#eeebe2] p-10">
           <h1 className="text-4xl text-center text-[#331A15]">
