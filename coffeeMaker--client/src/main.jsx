@@ -3,7 +3,6 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import AddCoffee from "./components/ShowAllCoffee";
 import Home from "./components/shared/Home";
 import ShowAllCoffee from "./components/ShowAllCoffee";
 import AddCoffeeForm from "./components/AddCoffeeForm";
@@ -12,16 +11,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    loader: ()=>fetch("http://localhost:3000/coffee"),
     children: [
       {
         path:"/",
         element:<Home></Home>
       },
-    {
-      path:'/',
-      element:<ShowAllCoffee></ShowAllCoffee>
-    }
-  ],
+      {
+        path:'/',
+        element:<ShowAllCoffee></ShowAllCoffee>,
+    
+        
+      }
+    ],
   },
   {
     path:"/addCoffeeForm",

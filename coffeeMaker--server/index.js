@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// XUNObJO83OcbnzU1 coffeMaker2
 app.get('/', (req, res) => {
   res.send('Say Hello to Coffee Maker!')
 })
@@ -45,6 +44,7 @@ async function run() {
     app.get('/coffee',async(req,res)=>{
       const cursor=coffeeCollection.find()
       const result= await cursor.toArray()
+      // console.log("the result=>",result);
       res.send(result)
 
     })
