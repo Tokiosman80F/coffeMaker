@@ -32,6 +32,7 @@ const AddCoffeeForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("Coffee detail data =>",data);
+        form.reset()
       });
   };
   return (
@@ -173,3 +174,11 @@ const AddCoffeeForm = () => {
 };
 
 export default AddCoffeeForm;
+
+// Image url
+// https://i.ibb.co/GxMhs3T/pexels-arya-bajra-15801008.jpg
+// https://i.ibb.co/j4kmHvs/pexels-ari-jones-251336.jpg
+// https://i.ibb.co/c3Tp4gv/pexels-pok-rie-608127.jpg
+// https://i.ibb.co/m4gwYP5/pexels-jill-wellington-3880909.jpg
+// https://i.ibb.co/GxMhs3T/pexels-arya-bajra-15801008.jpg
+// https://i.ibb.co/DbDY1Df/pexels-dina-nasyrova-5071493.jpg
